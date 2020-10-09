@@ -1,0 +1,173 @@
+#style_switcher {
+    position: fixed;
+    right: 0;
+    top: 55px;
+    background: #fff;
+    width: 330px;
+    z-index: 1094;
+    box-sizing: border-box;
+    padding-left: 0px !important;
+    padding: 16px;
+    margin-right: -330px;
+    -webkit-transition: margin 280ms cubic-bezier(.4, 0, .2, 1);
+    transition: margin 280ms cubic-bezier(.4, 0, .2, 1);
+    box-shadow: -2px 2px 5px rgba(0, 0, 0, .26);
+    height: 620px;
+}
+
+#style_switcher.switcher_active {
+    margin-right: 0
+}
+
+#style_switcher_toggle {
+    position: absolute;
+    top: 8px;
+    left: -44px;
+    width: 44px;
+    height: 36px;
+    background: #fff;
+    border-radius: 4px 0 0 4px;
+    cursor: pointer;
+    padding: 0 8px;
+    box-shadow: -2px 2px 5px rgba(0, 0, 0, .26);
+    box-sizing: border-box;
+    z-index: 1096
+}
+
+#style_switcher_toggle .material-icons {
+    font-size: 24px;
+    line-height: 36px;
+    color: #212121
+}
+
+.shipmentFilter {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 600px;
+    width: 330px;
+    margin-top: -10px;
+}
+
+.bucketItem {
+    border: none !important;
+    min-height: 20px !important;
+    padding-top: 3px !important;
+    padding-bottom: 1px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+
+.bucketItemCheckbox {
+    max-width: 90%;
+    max-height: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    float: left;
+    font-size: 12px;
+}
+
+.bucketItemCount {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: unset;
+    text-align: right;
+    font-weight: bold;
+    padding-right: 8px
+}
+
+.seeMore {
+    margin-left: 4px;
+    font-size: 11px;
+}
+
+.searchComponent {
+    margin-top: -45px;
+    background-color: white;
+    position: absolute;
+    max-height: 40px;
+}
+
+.bucket {
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+}
+
+.bucketName {
+    min-height: 25px;
+    padding-top: 15px;
+}
+
+.bucketSearchIcon {
+    margin-top: -35px;
+    margin-right: -5px;
+    float: right;
+}
+
+.dateRangeFilter {
+    margin-left: -20px;
+}
+
+.shipmentFilters {
+    margin-top: -25px;
+}
+
+.paginationTotalElements {
+    text-align: right;
+    margin-top: 0px;
+}
+
+.tableCellStyle {
+    max-height: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.whiteSpaceNormal {
+    white-space: normal;
+}
+
+.searchBadge {
+    max-width: 300px;
+    margin-right: 5px;
+    margin-bottom: 5px !important;
+}
+
+.searchBadgeText {
+    max-width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    float: left;
+    font-size: 12px;
+    margin-top: 3px;
+}
+
+.searchBadgeClose {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: right;
+    font-weight: bold;
+}
+
+.searchSortIcon {
+    background-color: white;
+    margin-right: 5px;
+}
+
+.searchFilters {
+    margin-top: -5px;
+    margin-bottom: -5px;
+}
+
+.savedSearchesInput {
+    margin-top: -20px;
+    max-width: 130px;
+}
+
+.savedSearchesActions {
+    min-width: 80px;
+    margin-top: -5px;
+    margin-left: -10px;
+}

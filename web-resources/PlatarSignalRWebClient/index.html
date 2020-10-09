@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SignalR Simple Chat</title>
+    <style type="text/css">
+        .status {
+            background-color: #99FFCC;
+            border: thick solid #808080;
+            padding: 5px 10px;
+            margin: 10px;
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 98%;
+            margin: 10px 20px;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+<div class="status">
+    <ul id="serverstatus"></ul>
+</div>
+<table id="platestable">
+    <tr>
+        <th>Plaka</th>
+        <th>Tarih Saat</th>
+        <th>Kamera</th>
+        <th>Görüntü</th>
+    </tr>
+</table>
+<script src="Scripts/jquery-1.6.4.js"></script>
+<script src="Scripts/jquery.signalR-2.0.0.js"></script>
+<script src="Scripts/string.js"></script>
+<script src="Scripts/hubs.js"></script>
+
+<script type="text/javascript">
+
+    //Plaka Tanıma Sunucu IP adresi
+    var PlatesHost = "172.16.167.17";
+
+    $(function () {
+        //Hub URL yi set ediyoruz
+        $.connection.hub.url = String.format("http://{0}:4507/signalr", PlatesHost);
+
+        var pHub = $.connection.platarHub;
+
+        // Kameranın gönderdiği plakaları alan metodu tanımlıyoruz
+        pHub.client.addPlate = function (plate) {
+            console.log(plate);
+            var dataArray = plate.split(";");
+            var platedata;
+            if (dataArray[0] == "PLATE") {
+                platedata = {
+                    PlateType: dataArray[1] != null ? dataArray[1] : string.Empty,
+                    Blacklist: dataArray[2] != null ? dataArray[2] : string.Empty,
+                    WhySearch: dataArray[3] != null ? dataArray[3] : string.Empty,
+                    BiosName: dataArray[4] != null ? dataArray[4] : string.Empty,
+                    Plate: dataArray[5] != null ? dataArray[5] : string.Empty,
+                    Country: dataArray[6] != null ? dataArray[6] : string.Empty,
+                    Speed: dataArray[7] != null ? dataArray[7] : string.Empty,
+                    Datetime: dataArray[8] != null ? dataArray[8] : string.Empty,
+                    FilePath: dataArray[9] != null ? GetPlateImageFilePath(dataArray[9], true) : string.Empty,
+                    Pk: dataArray[10] != null ? dataArray[10] : string.Empty,
+                    PlatePk: dataArray[11] != null ? dataArray[11] : string.Empty,
+                    OcrMark: dataArray[12] != null ? dataArray[12] : string.Empty,
+                    OcrColor: dataArray[13] != null ? dataArray[13] : string.Empty,
+                    NRead: dataArray[14] != null ? dataArray[14] : string.Empty,
+                    OcrScore: dataArray[15] != null ? dataArray[15] : string.Empty,
+                    OhtId: dataArray[16] != null ? dataArray[16] : string.Empty,
+                    RedTime: dataArray[17] != null ? dataArray[17] : string.Empty,
+                    YellowTime: dataArray[18] != null ? dataArray[18] : string.Empty,
+                    BlacklistSource: dataArray[19] != null ? dataArray[19] : string.Empty,
+                    DepartmentPk: dataArray[20] != null ? dataArray[20] : "0",
+                    BlacklistType: dataArray[21] != null ? dataArray[21] : string.Empty,
+                    BlacklistText: dataArray[22] != null ? dataArray[22] : string.Empty,
+                    PointPk: dataArray[23] != null ? dataArray[23] : string.Empty,
+                    PointName: dataArray[24] != null ? dataArray[24] : string.Empty,
+                    Brand: "",
+                    Model: "",
+                    Color: "",
+                    Year: "",
+                    Violation: ""
+                };
+                $('#platestable').append(String.format("<tr><td>{0}</td><td>{1}</td><td>{2}</td><td><a href='{3}' target='_blank'><img src='{4}' width='256' height='204' /></a></td></tr>",
+                        platedata.Plate,
+                        platedata.Datetime,
+                        platedata.PointName,
+                        GetPlateImageFilePath(dataArray[9], false),
+                        platedata.FilePath));
+            }
+            ;
+        };
+
+        // Hub bağlantısını başlatıyoruz
+        $.connection.hub.start().done(function () {
+            $('#serverstatus').append('<li><strong>' + PlatesHost + ' Sunucuya bağlanıldı.</strong></li>');
+            if (pHub != undefined)
+            //bağlantı sağlandıktan sonra client bilgisi yollanmalıdır aksi takdirde sunucu plaka bilgilerini göndermez
+                pHub.server.clientInfo({
+                    UserName: "admin",
+                    Online: true,
+                    IsOperator: false,
+                    FullAccess: true,
+                    OnlyAlarm: false
+                });
+        });
+
+        $.connection.hub.stateChanged(function (connection, data) {
+            console.log("stateChanged");
+            console.log(connection);
+            console.log(data);
+        });
+
+        $.connection.hub.error(function (connection, data) {
+            console.log("error");
+            console.log(connection);
+            console.log(data);
+        });
+
+        $.connection.hub.disconnected(function (connection) {
+            console.log("disconnected");
+            console.log(connection);
+        });
+
+        $.connection.hub.connectionSlow(function (connection) {
+            console.log("connectionSlow");
+            console.log(connection);
+        });
+
+        $.connection.hub.reconnecting(function (connection) {
+            console.log("reconnecting");
+            console.log(connection);
+        });
+
+        $.connection.hub.reconnected(function (connection) {
+            console.log("reconnected");
+            console.log(connection);
+        });
+
+        $.connection.hub.logging = true;
+    });
+
+    //Plaka görüntülerinin yolunu veren metod
+    //filename : soketten gelen resim yolu
+    //thumb : resmin orjinal mi thumbnail mi olacağı
+    function GetPlateImageFilePath(filename, thumb) {
+        var filepath;
+        if (thumb) {
+            filepath = String.format("http://{0}/plates/{1}", PlatesHost, filename).replace(".jpg", "_small.jpg");
+        }
+        else {
+            filepath = String.format("http://{0}/plates/{1}", PlatesHost, filename);
+        }
+        return filepath;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+@media only screen and (min-width: 768px) {
+
+    div.ganttview-slide-container {
+        width: 95%;
+    }
+
+    div.ganttview-vtheader {
+        width: 5%;
+    }
+}
+
+div.ganttview-vtheader-series-row .series-content {
+    text-align: center;
+    padding-top: 10px;
+}
+
+div.ganttview-hzheader-day {
+    width: 40px;
+}
+
+div.ganttview-grid-row-cell {
+    width: 40px;
+}
+
+div.ganttview-hzheader-month {
+    font-size: 16px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+div.ganttview-vtheader {
+    margin-top: 51px;
+}

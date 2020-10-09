@@ -1,0 +1,41 @@
+#style_switcher {
+    position: fixed;
+    right: 0;
+    top: 55px;
+    background: #fff;
+    width: 330px;
+    z-index: 1094;
+    box-sizing: border-box;
+    padding-left: 0px !important;
+    padding: 16px;
+    margin-right: -330px;
+    -webkit-transition: margin 280ms cubic-bezier(.4, 0, .2, 1);
+    transition: margin 280ms cubic-bezier(.4, 0, .2, 1);
+    box-shadow: -2px 2px 5px rgba(0, 0, 0, .26);
+    height: 620px;
+}
+
+#style_switcher.switcher_active {
+    margin-right: 0
+}
+
+#style_switcher_toggle {
+    position: absolute;
+    top: 8px;
+    left: -44px;
+    width: 44px;
+    height: 36px;
+    background: #fff;
+    border-radius: 4px 0 0 4px;
+    cursor: pointer;
+    padding: 0 8px;
+    box-shadow: -2px 2px 5px rgba(0, 0, 0, .26);
+    box-sizing: border-box;
+    z-index: 1096
+}
+
+#style_switcher_toggle .material-icons {
+    font-size: 24px;
+    line-height: 36px;
+    color: #212121
+}

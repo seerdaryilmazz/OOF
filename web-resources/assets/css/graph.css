@@ -1,0 +1,118 @@
+body {
+    font-family: Helvetica;
+}
+
+.update {
+    color: #888888;
+    position:absolute;
+    top: 10px;
+    left: 10px;
+    padding: 5px 10px;
+    margin: 10px;
+    cursor: pointer;
+    border: 1px solid #999999;
+    border-radius: 3px;
+}
+
+.node circle {
+    fill: #888888;
+    stroke: #fff;
+    stroke-width: 2px;
+}
+
+.node text {
+    fill:black;
+    stroke: none;
+    font-size: .6em;
+}
+ #FromCountry{
+    fill: #7c4dff!important;
+    stroke: #311b92!important
+}
+
+#ToCountry{
+    fill: #a0f!important;
+    stroke: #311b92!important
+}
+ #SenderCompany{
+     fill: #f06292!important;
+     stroke: #ff4081!important;
+
+ }
+
+#ReceiverCompany{
+    fill: #18ffff!important;
+    stroke:#304ffe!important;
+
+}
+
+ #Customer{
+     fill:yellow;
+     stroke:#f9a825!important
+ }
+ #ServiceType{
+     stroke:#1a237e!important;
+     fill:#303f9f!important
+ }
+ #OrderTemplate{
+     fill:#3e2723!important;
+ }
+#ServiceType{
+    fill:#64dd17!important;
+    stroke:#33691e!important;
+}
+#LoadType{
+    fill:#ec407a!important;
+    stroke:#880e4f!important;
+}
+#PackageType{
+    fill:#00bfa5!important;
+    stroke:#006064!important;
+}
+#ADR{
+    fill:#ff5252!important;
+    stroke:#d50000!important;
+}
+#LoadCompany{
+    fill:#ff7043!important;
+    stroke:#bf360c!important;
+
+}
+
+#UnloadCompany{
+    fill:#ffab00!important;
+    stroke:#bf360c!important;
+
+}
+#LoadAddress{
+    fill:#ff9063!important;
+    stroke:#bf360c!important;
+
+}
+
+#UnloadAddress{
+    fill:#ffcb20!important;
+    stroke:#bf360c!important;
+
+}
+#Certificate{
+    fill:#a0f!important;
+    stroke:#4a148c!important
+}
+.link {
+    stroke: #cccccc;
+
+    fill:#b71c1c!important;
+}
+
+
+
+.bar
+{
+display: inline-block;
+width: 20px;
+height: 75px; /* Gets overriden by D3-assigned height below */
+margin-right: 2px;
+background-color: teal;
+
+}
