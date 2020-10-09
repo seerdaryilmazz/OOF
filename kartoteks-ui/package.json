@@ -1,0 +1,45 @@
+{
+  "name": "ekol",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.13.1",
+    "history": "^2.1.2",
+    "lodash": "^4.14.1",
+    "messageformat": "^0.3.1",
+    "moment": "^2.18.1",
+    "node-uuid": "^1.4.7",
+    "prop-types": "^15.5.10",
+    "react": "^15.4.0",
+    "react-dom": "^15.4.0",
+    "react-router": "^2.6.1",
+    "recharts": "^0.22.1",
+    "services": "0.0.3",
+    "susam-components": "^0.1.369",
+    "uuid": "^2.0.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.9.1",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-react-hmre": "^1.1.1",
+    "babel-plugin-transform-class-properties": "^6.11.5",
+    "css-loader": "^0.23.1",
+    "json-loader": "^0.5.4",
+    "html-webpack-plugin": "^2.22.0",
+    "npm-install-webpack-plugin": "^4.0.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-merge": "^0.13.0"
+  },
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack-dev-server --port 8886",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
