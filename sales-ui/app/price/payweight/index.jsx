@@ -1,0 +1,1 @@
+export { PayweightManagement } from './PayweightManagement';

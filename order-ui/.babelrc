@@ -1,0 +1,14 @@
+{
+  "presets": [
+    "es2015",
+    "react"
+  ],
+  "plugins": ["transform-class-properties"],
+  "env": {
+    "start": {
+      "presets": [
+        "react-hmre"
+      ]
+    }
+  }
+}

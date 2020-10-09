@@ -1,0 +1,50 @@
+{
+  "name": "ekol",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.13.1",
+    "d3": "^3.4.11",
+    "json-loader": "^0.5.4",
+    "lodash": "^4.17.11",
+    "messageformat": "^0.3.1",
+    "moment": "^2.22.2",
+    "moment-timezone": "^0.5.23",
+    "node-uuid": "^1.4.7",
+    "nprogress": "^0.2.0",
+    "prop-types": "^15.6.2",
+    "public": "^0.1.4",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
+    "react-json-view": "^1.19.1",
+    "react-redux": "^4.4.9",
+    "react-router": "^2.6.1",
+    "redux": "^3.5.2",
+    "steps": "0.0.2",
+    "susam-components": "^0.1.299",
+    "uuid": "^2.0.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-class-properties": "^6.11.5",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-react-hmre": "^1.1.1",
+    "css-loader": "^0.23.1",
+    "html-webpack-plugin": "^2.22.0",
+    "npm-install-webpack-plugin": "^4.0.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-merge": "^0.13.0"
+  },
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack-dev-server --port 8888",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
