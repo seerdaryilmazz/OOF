@@ -1,0 +1,22 @@
+{
+  "name": "susam-components",
+  "author": "Ekol Logistics OneOrder Engineering Team",
+  "version": "0.1.418",
+  "description": "Component library for Ekol Logistics OneOrder",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.13.1",
+    "d3": "^3.4.11",
+    "lodash": "^4.14.1",
+    "messageformat": "^0.3.1",
+    "moment": "^2.17.1",
+    "moment-timezone": "^0.5.10",
+    "nprogress": "^0.2.0",
+    "prop-types": "^15.5.10",
+    "push.js": "^1.0.9",
+    "react": "^15.4.0",
+    "react-device-detect": "^1.11.14",
+    "react-dom": "^15.4.0",
+    "uuid": "^2.0.2"
+  }
+}

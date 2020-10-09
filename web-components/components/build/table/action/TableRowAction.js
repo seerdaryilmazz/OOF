@@ -1,0 +1,134 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.TableRowAction = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _uuid = require('uuid');
+
+var _uuid2 = _interopRequireDefault(_uuid);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var TableRowAction = exports.TableRowAction = function (_React$Component) {
+    _inherits(TableRowAction, _React$Component);
+
+    function TableRowAction(props) {
+        _classCallCheck(this, TableRowAction);
+
+        var _this = _possibleConstructorReturn(this, (TableRowAction.__proto__ || Object.getPrototypeOf(TableRowAction)).call(this, props));
+
+        _this.prepareCustomActionButtonElems = function (actionButtons, self, index) {
+            if (!actionButtons) {
+                return null;
+            }
+
+            return actionButtons.map(function (button) {
+
+                return _react2.default.createElement(
+                    'a',
+                    { key: _uuid2.default.v4(), href: 'javascript:void(null);', onClick: function onClick() {
+                            return button.action(self.props.values);
+                        } },
+                    self.getActionIcon(button)
+                );
+            });
+        };
+
+        _this.prepareRowEditButtonElem = function (rowEdit, self, index) {
+            if (!rowEdit) {
+                return null;
+            }
+
+            return _react2.default.createElement(
+                'a',
+                { href: 'javascript:void(null);', onClick: function onClick() {
+                        return _this.props.enableRowEditMode(index);
+                    } },
+                self.getActionIcon(rowEdit)
+            );
+        };
+
+        _this.prepareRowDeleteButtonElem = function (rowDelete, self, index) {
+            if (!rowDelete) {
+                return null;
+            }
+
+            return _react2.default.createElement(
+                'a',
+                { href: 'javascript:void(null);', onClick: function onClick() {
+                        return _this.deleteRowConfirm(rowDelete, self, self.props.values);
+                    } },
+                self.getActionIcon(rowDelete)
+            );
+        };
+
+        _this.getActionIcon = function (button) {
+
+            var defaultIcon = "pencil-square";
+
+            var className = void 0;
+
+            if (button.icon) {
+                className = "md-icon uk-icon-" + button.icon;
+            } else {
+                className = "md-icon uk-icon-" + defaultIcon;
+            }
+
+            return _react2.default.createElement('i', { className: className, 'data-uk-tooltip': '{pos:\'bottom\'}', title: button.title });
+        };
+
+        return _this;
+    }
+
+    _createClass(TableRowAction, [{
+        key: 'render',
+        value: function render() {
+
+            var actionButtons = this.props.actionButtons;
+            var rowEdit = this.props.rowEdit;
+            var rowDelete = this.props.rowDelete;
+            var self = this;
+            var index = parseInt(this.props.index);
+
+            var actionButtonsStyle = { display: 'none' };
+            if (actionButtons || rowEdit || rowDelete) {
+                actionButtonsStyle = {};
+            }
+
+            return _react2.default.createElement(
+                'td',
+                { className: 'uk-text-center', style: actionButtonsStyle },
+                this.prepareCustomActionButtonElems(actionButtons, self, index),
+                this.prepareRowEditButtonElem(rowEdit, self, index),
+                this.prepareRowDeleteButtonElem(rowDelete, self, index)
+            );
+        }
+    }, {
+        key: 'deleteRowConfirm',
+        value: function deleteRowConfirm(rowDelete, self, rowData) {
+            if (rowDelete.confirmation) {
+                UIkit.modal.confirm(rowDelete.confirmation, function () {
+                    return self.props.rowDelete.action(rowData);
+                });
+            } else {
+                self.props.rowDelete.action(rowData);
+            }
+        }
+    }]);
+
+    return TableRowAction;
+}(_react2.default.Component);
